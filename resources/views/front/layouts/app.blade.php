@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html class="no-js" lang="en_AU" />
+<html class="no-js" lang="fr" />
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	{{-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /> --}}
+    <meta charset="UTF-8">
 	<title>NovoTech</title>
 	<meta name="description" content="" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, maximum-scale=1, user-scalable=no" />

@@ -22,4 +22,6 @@ Route::get('/', [HomeController::class, 'index'])->name('front.home');
 Route::get('/account/register', [AccountController::class, 'registration'])->name('account.register');
 Route::get('/account/login', [AccountController::class, 'login'])->name('account.login');
 Route::post('/account/process-register', [AccountController::class, 'userRegistration'])->name('account.userRegistration');
+Route::post('/account/process-login', [AccountController::class, 'authentification'])->name('account.processLogin');
+Route::get('/account/profile', [AccountController::class, 'profile'])->name('account.profile');
 // Route::get('/', [HomeController::class, 'index']);

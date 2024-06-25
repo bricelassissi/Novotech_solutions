@@ -42,7 +42,7 @@
                         </div> 
                         <div class="mb-3">
                             <label for="" class="mb-2">Confirmer votre mot de passe*</label>
-                            <input type="password" name="confirmMotDePasse" id="confirmMotDePasse" class="form-control" placeholder="Confirmation votre mot de passe">
+                            <input type="password" name="confirmationMotDePasse" id="confirmationMotDePasse" class="form-control" placeholder="Confirmation votre mot de passe">
                             <p></p>
                         </div> 
                         <!-- <div class="mb-3 alert alert-primary" role="alert">
@@ -55,7 +55,7 @@
                     </form>                    
                 </div>
                 <div class="mt-4 text-center">
-                    <p>Avez-vous dejà un compte? <a  href="login.html">Se connecter</a></p>
+                    <p>Avez-vous dejà un compte? <a  href="{{route('account.login')}}">Se connecter</a></p>
                 </div>
             </div>
         </div>
@@ -132,13 +132,13 @@
                             .removeClass('invalid-feedback')
                             .html("")
                         }
-                        if(errors.confirmMotDePasse) {
-                            $("#confirmMotDePasse").addClass('is-invalid')
+                        if(errors.confirmationMotDePasse) {
+                            $("#confirmationMotDePasse").addClass('is-invalid')
                             .siblings('p')
                             .addClass('invalid-feedback')
-                            .html(errors.confirmMotDePasse)
+                            .html(errors.confirmationMotDePasse)
                         } else {
-                            $("#confirmMotDePasse").removeClass('is-invalid')
+                            $("#confirmationMotDePasse").removeClass('is-invalid')
                             .siblings('p')
                             .removeClass('invalid-feedback')
                             .html("")
@@ -165,7 +165,7 @@
                             .siblings('p')
                             .removeClass('invalid-feedback')
                             .html("")
-                        $("#confirmMotDePasse").removeClass('is-invalid')
+                        $("#confirmationMotDePasse").removeClass('is-invalid')
                             .siblings('p')
                             .removeClass('invalid-feedback')
                             .html("")

@@ -9147,7 +9147,7 @@ textarea.form-control-lg {
   outline: none !important;
 }
 body {
-  font-family: 'Mont-Regular';
+  /* font-family: 'Mont-Regular'; */
   font-size: 16px;
   border: none;
   height: 100%;
@@ -9161,7 +9161,7 @@ figure, pre, table {
 img {
   width: 100%;
 }
-h1, h2, h3, h4, h5, h6 {
+/* h1, h2, h3, h4, h5, h6 {
   margin: 0;
   line-height: 1.2;
   padding: 0px 0 20px;
@@ -9204,7 +9204,7 @@ h5 {
 }
 h6 {
   font-size: 18px;
-}
+} */
 ul {
   margin: 0px;
   padding: 0px;
@@ -9218,7 +9218,7 @@ span {
 p, q {
   font-size: 16px;
   line-height: 1.8;
-  font-family: 'Inter-Regular';
+  /* font-family: 'Inter-Regular'; */
 }
 p span, q span {
   font-size: inherit;
@@ -9242,10 +9242,10 @@ a:hover {
 }
 button, .btn {
   -webkit-transition: all 0.3s ease;
-  font-family: 'Mont-Book';
+  /* font-family: 'Mont-Book'; */
   font-size: 16px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 400;
   position: relative;
   display: inline-block;
   border-radius: 5px;
@@ -9624,7 +9624,7 @@ footer .nav-link {
 .section-5 .account-nav ul li a:hover {
   color: #A8DF8E;
 }
-@font-face {
+/* @font-face {
   font-family: 'fontello';
   src: url('../fonts/fontello/fontello.eot?20213350');
   src: url('../fonts/fontello/fontello.eot?20213350#iefix') format('embedded-opentype'), url('../fonts/fontello/fontello.woff2?20213350') format('woff2'), url('../fonts/fontello/fontello.woff?20213350') format('woff'), url('../fonts/fontello/fontello.ttf?20213350') format('truetype'), url('../fonts/fontello/fontello.svg?20213350#fontello') format('svg');
@@ -9822,7 +9822,7 @@ footer .nav-link {
   font-weight: normal;
   font-style: italic;
   font-display: swap;
-}
+} */
 [class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "fontello";
   font-style: normal;
@@ -10025,3 +10025,30 @@ footer .nav-link {
   content: '';
 }
 /* '' */
+
+
+
+
+/* stylisation personalisée */
+
+.icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.icon i {
+  font-size: 2.25rem;
+}
+
+.icon-shape {
+  display: inline-flex;
+  padding: 12px;
+  text-align: center;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon-shape i {
+  font-size: 1.25rem;
+}

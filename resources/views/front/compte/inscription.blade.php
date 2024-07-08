@@ -170,7 +170,7 @@
                             .removeClass('invalid-feedback')
                             .html("")
 
-                    window.location.href='{{route("account.login")}}';
+                        window.location.href='{{route("account.login")}}';
 
 
                     }

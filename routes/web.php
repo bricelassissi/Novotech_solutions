@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MetierController;
 use App\Http\Controllers\PubliciteController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SearchArtisanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 Route::get('/', [HomeController::class, 'index'])->name('front.home');
+Route::get('/rechercher-un-artisans', [SearchArtisanController::class, 'search'])->name('front.find');
 Route::get('/compte/inscription', [AccountController::class, 'registration'])->name('account.register');
 Route::get('/compte/connexion', [AccountController::class, 'login'])->name('account.login');
 Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');

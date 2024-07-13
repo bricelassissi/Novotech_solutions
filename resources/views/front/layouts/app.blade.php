@@ -14,7 +14,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Trumbowyg/2.27.3/ui/trumbowyg.min.css" integrity="sha512-Fm8kRNVGCBZn0sPmwJbVXlqfJmPC13zRsMElZenX6v721g/H7OukJd8XzDEBRQ2FSATK8xNF9UYvzsCtUpfeJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css">
-    
+
 	<!-- Fav Icon -->
 	<link rel="shortcut icon" type="image/x-icon" href="#" />
 </head>
@@ -30,16 +30,16 @@
 				<ul class="navbar-nav ms-0 ms-sm-0 me-auto mb-2 mb-lg-0 ms-lg-4">
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="{{route('front.home')}}">Accueil</a>
-					</li>	
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="qui-sommes-nous.html">Qui sommes nous?</a>
-					</li>	
+					</li>
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="trouver-artisan.html">Trouver un artisan</a>
-					</li>										
+						<a class="nav-link" aria-current="page" href="{{route('front.find')}}">Trouver un artisan</a>
+					</li>
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="nous-contacter.html">Nous contacter</a>
-					</li>										
+					</li>
 				</ul>
                 @if (!Auth::check())
 				<a class="btn btn-outline-primary me-2" href="{{route('account.login')}}" type="submit">Se Connecter</a>
@@ -47,7 +47,7 @@
                 @else
 				<a class="btn btn-outline-primary me-2" href="{{route('account.profile')}}" type="submit">Mon profil</a>
 				<a class="btn btn-danger" href="{{ route('account.logout') }}" type="submit">Se déconnecter</a>
-                @endif			
+                @endif
 			</div>
 		</div>
 	</nav>
@@ -114,7 +114,7 @@
                         <label for="exampleFormControlTextarea1" class="form-label">Message</label>
                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Votre message ici"></textarea>
                     </div>
-                    
+
                     <button class="btn btn-success">Envoyer</button>
                 </form>
 
@@ -123,7 +123,7 @@
         </div>
         <p class="text-center text-white pt-3 fw-bold fs-6">© 2024 NovoTech, tous droits reservés</p>
     </div>
-</footer> 
+</footer>
 <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
 <script src="{{asset('assets/js/bootstrap.bundle.5.1.3.min.js')}}"></script>
 <script src="{{asset('assets/js/instantpages.5.1.0.min.js')}}"></script>

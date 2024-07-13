@@ -13,14 +13,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
         category = event.target.value;
         console.log(category)
     }
-    function getFirstOptionValue() {
-        const selectElement = document.getElementById('category');
-        return selectElement.options[1].value;
-    }
+
     function redirectTo() {
-        initParam()
         city = document.getElementById('city').value;
         town = document.getElementById('town').value;
+        category = document.getElementById('category').value
         if(city !== "" || category !== "" || town !== "")
             window.location.href = `rechercher-un-artisans?&categorie=${encodeURIComponent(category)}&ville=${encodeURIComponent(city)}&commune=${encodeURIComponent(town)}`;
     }

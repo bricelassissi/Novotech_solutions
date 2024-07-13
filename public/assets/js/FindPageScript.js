@@ -1,8 +1,7 @@
 document.addEventListener('DOMContentLoaded', (event) => {
-
     let currentUrl = window.location.href;
-
     let urlParams = new URLSearchParams(currentUrl);
+    console.log(urlParams)
     if (urlParams.has('categorie')) {
         document.getElementById('category').value = urlParams.get('categorie');
     }

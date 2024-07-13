@@ -140,5 +140,5 @@
 
 {{-- Fin page d'accueil --}}
 
-<script src="{{asset('assets/js/redirectFromHomeToFIndCraftmanWithParams.js')}}"></script>
+<script src="{{asset('assets/js/redirectFromHomeToFIndCraftsmanWithParams.js')}}"></script>
 @endsection

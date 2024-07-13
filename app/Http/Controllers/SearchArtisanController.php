@@ -19,7 +19,7 @@ class SearchArtisanController extends Controller
 
         $metiers = $this->artisansService->getMetiersAvailable();
         return view(
-            'front.find',
+            'front.find-artisans-by-criteria',
             compact(
                 'craftsmen',
                 'metiers'
@@ -52,7 +52,7 @@ class SearchArtisanController extends Controller
                 $category,
                 $city,
                 $town,
-                18
+                9
             );
     }
 }

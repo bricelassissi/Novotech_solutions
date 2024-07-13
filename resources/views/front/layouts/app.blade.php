@@ -35,7 +35,7 @@
 						<a class="nav-link" aria-current="page" href="qui-sommes-nous.html">Qui sommes nous?</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="{{route('front.find')}}">Trouver un artisan</a>
+						<a class="nav-link" aria-current="page" href="{{route('front.find-artisans-by-criteria')}}">Trouver un artisan</a>
 					</li>
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="nous-contacter.html">Nous contacter</a>

@@ -24,7 +24,7 @@ use App\Http\Controllers\SearchArtisanController;
 //     return view('welcome');
 // });
 Route::get('/', [HomeController::class, 'index'])->name('front.home');
-Route::get('/rechercher-un-artisans', [SearchArtisanController::class, 'search'])->name('front.find');
+Route::get('/rechercher-un-artisans', [SearchArtisanController::class, 'search'])->name('front.find-artisans-by-criteria');
 Route::get('/compte/inscription', [AccountController::class, 'registration'])->name('account.register');
 Route::get('/compte/connexion', [AccountController::class, 'login'])->name('account.login');
 Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');

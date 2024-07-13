@@ -81,13 +81,21 @@
                                     </div>
                                 </div>
                             @endforeach
+                            @if($craftsmen->count() == 0)
+                               <div class="col-md-4">
+                                   Aucune donnée trouvé !
+                               </div>
+                            @endif
                         </div>
                     </div>
+                </div>
+                <div class="d-flex justify-content-around">
+                    {{ $craftsmen->links() }}
                 </div>
             </div>
         </div>
     </section>
-    <script src="{{asset('assets/js/redirectFromHomeToFIndCraftmanWithParams.js')}}"></script>
+    <script src="{{asset('assets/js/redirectFromHomeToFIndCraftsmanWithParams.js')}}"></script>
     <script src="{{asset('assets/js/FindPageScript.js')}}"></script>
 
 @endsection

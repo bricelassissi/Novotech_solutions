@@ -24,22 +24,31 @@ class Artisan extends Model
     public function getPaginatedCraftsmenByCriteriaSearch(?string $category,
                                                           ?string $city,
                                                           ?string $town,
-                                                          int     $numberPerPage
+                                                          int     $numberPerPage,
+                                                          ?String   $longitude,
+                                                          ?String   $latitude
     ): LengthAwarePaginator
     {
+        $localisation = "";
+        if($latitude != null && $longitude != null){
+            $localisation = ",(6371 * acos(cos(radians('$latitude'))
+                    * cos(radians(artisans.latitude)) * cos(radians(artisans.longitude) -
+                        radians('$longitude')) + sin(radians('$latitude')) *
+                        sin(radians(artisans.latitude)))) as distance";
+        }
 
         $queryBuilder = DB::table('artisans')
             ->join('users', 'users.id', '=', 'artisans.user_id')
             ->join('metiers', 'metiers.id', '=', 'artisans.metier_id')
             ->select(
                 DB::raw(
-                    'artisans.id artisans_id,
+                    "artisans.id artisans_id,
                     users.nom user_nom,
                     users.prenom user_prenom,
                     metiers.metier,
                     artisans.ville,
                     artisans.quartier,
-                    artisans.telephone'
+                    artisans.telephone $localisation"
                 )
             );
 
@@ -56,8 +65,26 @@ class Artisan extends Model
                 ->where("artisans.quartier", "like", "%".$town."%");
         }
 
+        if($latitude != null && $longitude != null){
+            $queryBuilder
+                ->having('distance','<', 10);
+        }
+
+
         return $queryBuilder
             ->paginate($numberPerPage);
 
+    }
+
+    public function getCraftsmenCities(){
+        return DB::table('artisans')
+            ->select(DB::raw('DISTINCT artisans.ville'))
+            ->get();
+    }
+
+    public function getCraftsmensQuartier(){
+        return DB::table('artisans')
+            ->select(DB::raw('DISTINCT artisans.quartier'))
+            ->get();
     }
 }

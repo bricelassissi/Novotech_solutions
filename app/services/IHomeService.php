@@ -10,5 +10,7 @@ interface IHomeService {
     function getSomeCraftsman(): LengthAwarePaginator;
     function getRandom3Client(): Collection;
     function getMetiersAvailable(): Collection;
+    function getCities(): Collection;
+    function getTown(): Collection;
 }
 

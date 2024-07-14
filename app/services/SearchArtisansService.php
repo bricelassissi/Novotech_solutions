@@ -26,11 +26,13 @@ class SearchArtisansService implements ISearchArtisansService {
                                     ?string $city,
                                     ?string $town,
                                     int $numberPerPage,
+                                    ?string $longitude,
+                                    ?string $latitude,
                                     Request $request
     ): LengthAwarePaginator
     {
         return $this->artisan
-            ->getPaginatedCraftsmenByCriteriaSearch($category, $city, $town, $numberPerPage)
+            ->getPaginatedCraftsmenByCriteriaSearch($category, $city, $town, $numberPerPage, $longitude, $latitude)
             ->appends($request->query());
     }
 }

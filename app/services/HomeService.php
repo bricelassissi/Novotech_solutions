@@ -24,14 +24,22 @@ class HomeService implements IHomeService{
         return $this->metier->getCountCraftsmanByJob();
     }
     public function getSomeCraftsman(): LengthAwarePaginator {
-        return $this->artisan->getPaginatedCraftsmenByCriteriaSearch(null, null, null, 9);
+        return $this->artisan->getPaginatedCraftsmenByCriteriaSearch(null, null, null, 9, null, null);
     }
-    public function getRandom3Client(): Collection{
+    public function getRandom3Client(): Collection {
         return $this->user->getCountCraftsmanByJob();
     }
 
-    function getMetiersAvailable(): Collection{
+    function getMetiersAvailable(): Collection {
         return $this->metier->getMetiers();
+    }
+
+    function getCities(): Collection {
+        return $this->artisan->getCraftsmenCities();
+    }
+
+    function getTown(): Collection {
+        return $this->artisan->getCraftsmensQuartier();
     }
 }
 

@@ -20,7 +20,7 @@
             <div class="container">
                 <div class="card border-0 shadow p-5">
                     <div class="row">
-                        <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
+                        <div class="col-md-2 mb-2 mb-sm-2 mb-lg-0">
                             <select name="category" id="category" class="form-control">
                                 <option value="">Selectionnez une Catégorie</option>
                                 @foreach($metiers as $metier)
@@ -28,19 +28,35 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                            <input type="text" class="form-control" name="search" id="city" placeholder="Ville">
+                        <div class="col-md-2 mb-2 mb-sm-2 mb-lg-0">
+                            <select name="ville" id="city" class="form-control">
+                                <option value="">Selectionnez une ville</option>
+                                @foreach($cities as $city)
+                                    <option value={{$city->ville}}>{{$city->ville}}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                            <input type="text" class="form-control" name="search" id="town" placeholder="Commune">
+                        <div class="col-md-2 mb-2 mb-sm-2 mb-lg-0">
+                            <select name="quartier" id="town" class="form-control">
+                                <option value="">Selectionnez un quartier</option>
+                                @foreach($quartiers as $quartier)
+                                    <option value={{$quartier->quartier}}>{{$quartier->quartier}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3 mb-sm-3 mt-3 mb-lg-0">
+                            <div name="localisation" id="localisation" class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="localisation">
+                                <label class="form-check-label" for="flexCheckDefault">
+                                    Artisans dans vos environs
+                                </label>
+                            </div>
                         </div>
 
-
-                        <div class=" col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
+                        <div class="col-md-3 mb-xs-3 mb-sm-3 mb-lg-0">
                             <div class="d-grid gap-2">
                                 <button id="makeSearch" class="btn btn-primary btn-block">Rechercher</button>
                             </div>
-
                         </div>
                     </div>
                 </div>

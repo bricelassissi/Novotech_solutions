@@ -50,6 +50,7 @@
     <section class="section-3  py-5">
         <div class="container">
             <h2>Nos Artisans</h2>
+            @if($craftsmen->count() !== 0)<h6>Nombre d'artisans trouvé {{$craftsmen->total()}}</h6>@endif
             <div class="row pt-5">
                 <div class="job_listing_area">
                     <div class="job_lists">
@@ -90,7 +91,7 @@
                     </div>
                 </div>
                 <div class="d-flex justify-content-around">
-                    {{ $craftsmen->links() }}
+                    {{ $craftsmen->links()}}
                 </div>
             </div>
         </div>

@@ -3,9 +3,8 @@
 namespace App\Services;
 
 use App\Models\Artisan;
-use App\Models\Client;
 use App\Models\Metier;
-use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use \Illuminate\Support\Collection;
 
@@ -26,10 +25,13 @@ class SearchArtisansService implements ISearchArtisansService {
     function getCraftsmanByCriteria(?string $category,
                                     ?string $city,
                                     ?string $town,
-                                    int $numberPerPage
+                                    int $numberPerPage,
+                                    Request $request
     ): LengthAwarePaginator
     {
-        return $this->artisan->getPaginatedCraftsmenByCriteriaSearch($category, $city, $town, $numberPerPage);
+        return $this->artisan
+            ->getPaginatedCraftsmenByCriteriaSearch($category, $city, $town, $numberPerPage)
+            ->appends($request->query());
     }
 }
 

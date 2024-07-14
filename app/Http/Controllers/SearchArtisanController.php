@@ -16,7 +16,6 @@ class SearchArtisanController extends Controller
 
     public function search(Request $request) {
         $craftsmen = $this->getCraftmanByParams($request);
-
         $metiers = $this->artisansService->getMetiersAvailable();
         return view(
             'front.find-artisans-by-criteria',
@@ -52,7 +51,8 @@ class SearchArtisanController extends Controller
                 $category,
                 $city,
                 $town,
-                9
+                9,
+                $request
             );
     }
 }

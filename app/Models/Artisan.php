@@ -26,7 +26,8 @@ class Artisan extends Model
                                                           ?string $town,
                                                           int     $numberPerPage,
                                                           ?String   $longitude,
-                                                          ?String   $latitude
+                                                          ?String   $latitude,
+                                                          ?string $distance
     ): LengthAwarePaginator
     {
         $localisation = "";
@@ -67,7 +68,7 @@ class Artisan extends Model
 
         if($latitude != null && $longitude != null){
             $queryBuilder
-                ->having('distance','<', 10);
+                ->having('distance','<', 0);
         }
 
 

@@ -16,12 +16,12 @@
         </div>
         <div class="row">
             <div class="col-lg-3">
-                
+
                 @include('front.admin.admin-sidebar')
             </div>
             <div class="col-lg-9">
-                
-                <h2>Afficher les publicité inscrits ici.</h2>           
+
+                <h2>Afficher les publicité inscrits ici.</h2>
             </div>
         </div>
     </div>

@@ -1,43 +1,69 @@
 document.addEventListener('DOMContentLoaded', (event) => {
+
+
+    // int
+    document.getElementById("rayon")?.style.setProperty('display', 'none', 'important');
+    document.getElementById("rangeInterval")?.style.setProperty('display', 'none', 'important');
+    let currentUrl = window.location.href;
+    let urlParams = new URLSearchParams(currentUrl);
     // variables
-    let category = ""
-    let city = ""
-    let town = ""
-    let latitude = ""
-    let longitude = ""
+    let categorie = urlParams.has('categorie') ? urlParams.get('categorie') : ""
+    let ville = urlParams.has('ville') ? urlParams.get('ville') : ""
+    let commune = urlParams.has('commune') ? urlParams.get('commune') : ""
+    let latitude = urlParams.has('latitude') ? urlParams.get('latitude') : ""
+    let longitude = urlParams.has('longitude') ? urlParams.get('longitude') : ""
+    let localisation = urlParams.has('localisation') ? urlParams.get('localisation') : false
+    let rayon = urlParams.has('rayon') && urlParams.has('localisation') && urlParams.get('localisation') ? urlParams.get('rayon') : ""
 
     // events
-    document.getElementById('category').addEventListener('change', handleSelectChange)
+    document.getElementById('categorie').addEventListener('change', handleSelectChange)
     document.getElementById('makeSearch').addEventListener('click', redirectTo)
     document.getElementById('localisation').addEventListener('change', getCurrentPosition)
+    document.getElementById('rayon').addEventListener('change', getRayon)
 
     // functions
     function handleSelectChange(event) {
-        category = event.target.value;
+        categorie = event.target.value;
     }
 
-    function getCurrentPosition(){
-        if("geolocation" in navigator) {
-            navigator.geolocation.getCurrentPosition(e => {
-                latitude = e.coords.latitude
-                longitude = e.coords.longitude
-            })
+    function getRayon(event){
+        console.log("rayon",event.target.value);
+        if(localisation)
+            rayon = event.target.value
+    }
+
+    function getCurrentPosition(event){
+        localisation = event.target.checked
+        if(event.target.checked) {
+            preventUserForActivateLocalisation()
         }else {
-            alert("Geolocation n'est pas supporter sur ce navigateur.");
+            document.getElementById("rayon")?.style.setProperty('display', 'none', 'important');
+            document.getElementById("rangeInterval")?.style.setProperty('display', 'none', 'important');
+            latitude = ""
+            longitude = ""
+            rayon = ""
         }
     }
 
     function redirectTo() {
-        preventUserForActivateLocalisation()
-        city = document.getElementById('city').value;
-        town = document.getElementById('town').value;
-        category = document.getElementById('category').value
-        if(city !== "" || category !== "" || town !== "" || (latitude !== "" && longitude !== ""))
-            window.location.href = `rechercher-un-artisans?&categorie=${encodeURIComponent(category)}&ville=${encodeURIComponent(city)}&commune=${encodeURIComponent(town)}&longitude=${encodeURIComponent(longitude)}&latitude=${encodeURIComponent(latitude)}`;
+        ville = document.getElementById('ville').value;
+        commune = document.getElementById('commune').value;
+        categorie = document.getElementById('categorie').value
+        rayon = document.getElementById("rayon").value
+        localisation = document.getElementById("localisation").checked
+        if(localisation){
+            preventUserForActivateLocalisation()
+        }
+        console.log("localisation", localisation, latitude, longitude)
+
+        if(ville !== "" || categorie !== "" || commune !== "" || (localisation && latitude !== "" && longitude !== "" && rayon !== ""))
+            window.location.href = `rechercher-un-artisans?&categorie=${encodeURIComponent(categorie)}&ville=${encodeURIComponent(ville)}&commune=${encodeURIComponent(commune)}&localisation=${encodeURIComponent(localisation)}&longitude=${encodeURIComponent(longitude)}&latitude=${encodeURIComponent(latitude)}&rayon=${encodeURIComponent(rayon)}`;
     }
 
     function preventUserForActivateLocalisation(){
         if ("geolocation" in navigator) {
+            document.getElementById("rayon")?.style.setProperty('display', 'block', 'important');
+            document.getElementById("rangeInterval")?.style.setProperty('display', 'block', 'important');
             navigator.geolocation.getCurrentPosition(
                 (position) => {
                     latitude = position.coords.latitude
@@ -53,6 +79,17 @@ document.addEventListener('DOMContentLoaded', (event) => {
             );
         } else {
             alert("Geolocation n'est pas supporter sur ce navigateur.");
+            return ;
         }
+        console.log("latitude longitude", latitude, longitude);
     }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.location.hash) {
+            const element = document.querySelector(window.location.hash);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    });
 });

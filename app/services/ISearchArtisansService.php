@@ -14,7 +14,8 @@ interface ISearchArtisansService {
                                     int $numberPerPage,
                                     ?string $longitude,
                                     ?string $latitude,
-                                    Request $request
+                                    Request $request,
+                                    ?string $distance
     ): LengthAwarePaginator;
     function getMetiersAvailable(): Collection;
 }

@@ -44,6 +44,7 @@ class SearchArtisanController extends Controller
         $town = null;
         $longitude = null;
         $latitude = null;
+        $rayon = null;
 
         if ($request->has("categorie")) {
             $category = $request->input("categorie");
@@ -60,6 +61,9 @@ class SearchArtisanController extends Controller
         if ($request->has("longitude")) {
             $longitude = $request->input("longitude");
         }
+        if($request->has("rayon")){
+            $rayon = $longitude = $request->input("rayon");
+        }
 
         return $this->artisansService
             ->getCraftsmanByCriteria(
@@ -69,7 +73,8 @@ class SearchArtisanController extends Controller
                 9,
                 $longitude,
                 $latitude,
-                $request
+                $request,
+                $rayon
             );
     }
 }

@@ -8,6 +8,7 @@ use App\Http\Controllers\MetierController;
 use App\Http\Controllers\PubliciteController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SearchArtisanController;
+use App\Http\Controllers\EmailController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,18 +21,39 @@ use App\Http\Controllers\SearchArtisanController;
 |
 */
 
-// Route::get('/test', function () {
-//     return view('welcome');
-// });
-Route::get('/', [HomeController::class, 'index'])->name('front.home');
-Route::get('/rechercher-un-artisans', [SearchArtisanController::class, 'search'])->name('front.find-artisans-by-criteria');
-Route::get('/compte/inscription', [AccountController::class, 'registration'])->name('account.register');
-Route::get('/compte/connexion', [AccountController::class, 'login'])->name('account.login');
-Route::get('/logout', [AccountController::class, 'logout'])->name('account.logout');
-Route::post('/compte/process-inscription', [AccountController::class, 'userRegistration'])->name('account.userRegistration');
-Route::post('/compte/process-connexion', [AccountController::class, 'authentification'])->name('account.processLogin');
-Route::get('/compte/profil', [AccountController::class, 'profile'])->name('account.profile');
-Route::post('/compte/creer-artisan', [AccountController::class, 'createArtisan'])->name('account.createArtisan');
+
+Route::post('/send-email', [EmailController::class, 'index'])
+    ->name('email.send-email');
+
+Route::get('/contact-us', [EmailController::class, 'pageEmail'])
+    ->name('front.contact-us');
+
+Route::get('/', [HomeController::class, 'index'])
+    ->name('front.home');
+
+Route::get('/rechercher-un-artisans', [SearchArtisanController::class, 'search'])
+    ->name('front.find-artisans-by-criteria');
+
+Route::get('/compte/inscription', [AccountController::class, 'registration'])
+    ->name('account.register');
+
+Route::get('/compte/connexion', [AccountController::class, 'login'])
+    ->name('account.login');
+
+Route::get('/logout', [AccountController::class, 'logout'])
+    ->name('account.logout');
+
+Route::post('/compte/process-inscription', [AccountController::class, 'userRegistration'])
+    ->name('account.userRegistration');
+
+Route::post('/compte/process-connexion', [AccountController::class, 'authentification'])
+    ->name('account.processLogin');
+
+Route::get('/compte/profil', [AccountController::class, 'profile'])
+    ->name('account.profile');
+
+Route::post('/compte/creer-artisan', [AccountController::class, 'createArtisan'])
+    ->name('account.createArtisan');
 // Route::get('/', [HomeController::class, 'index']);
 
 

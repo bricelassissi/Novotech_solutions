@@ -3,7 +3,6 @@
 namespace App\Services;
 
 use App\Models\Artisan;
-use App\Models\Client;
 use App\Models\Metier;
 use App\Models\User;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -24,21 +23,21 @@ class HomeService implements IHomeService{
         return $this->metier->getCountCraftsmanByJob();
     }
     public function getSomeCraftsman(): LengthAwarePaginator {
-        return $this->artisan->getPaginatedCraftsmenByCriteriaSearch(null, null, null, 9, null, null);
+        return $this->artisan->getPaginatedCraftsmenByCriteriaSearch(null, null, null, 9, null, null, null);
     }
     public function getRandom3Client(): Collection {
         return $this->user->getCountCraftsmanByJob();
     }
 
-    function getMetiersAvailable(): Collection {
+    public function getMetiersAvailable(): Collection {
         return $this->metier->getMetiers();
     }
 
-    function getCities(): Collection {
+    public function getCities(): Collection {
         return $this->artisan->getCraftsmenCities();
     }
 
-    function getTown(): Collection {
+    public function getTown(): Collection {
         return $this->artisan->getCraftsmensQuartier();
     }
 }

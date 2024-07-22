@@ -2,22 +2,15 @@
 
 @section('main')
 
-    <section class="section-0 lazy d-flex bg-image-style dark align-items-center " class=""
+    <section class="section-0 lazy d-flex bg-image-style dark align-items-center "
              data-bg="assets/images/banner5.jpg">
         <div class="container">
-            <div class="row">
-                <div class="col-12 col-xl-8">
-                    <h1>Plateforme des artisan</h1>
-                    <p>Entreprise 72</p>
-                </div>
-            </div>
-
-            <section class="section-1 py-5 animate wow slideInRight">
+            <section class="section-1 animate wow slideInRight">
                 <div class="container">
-                    <div class="card border-0 shadow p-5">
+                    <div class="card border-0 shadow p-5" style="height: 150px">
                         <div class="row">
                             <div class="col-md-2 mb-2 mb-sm-2 mb-lg-0">
-                                <select name="category" id="category" class="form-control">
+                                <select name="category" id="categorie" class="form-control">
                                     <option value="">Selectionnez une Catégorie</option>
                                     @foreach($metiers as $metier)
                                         <option value={{$metier->id}}>{{$metier->metier}}</option>
@@ -25,7 +18,7 @@
                                 </select>
                             </div>
                             <div class="col-md-2 mb-2 mb-sm-2 mb-lg-0">
-                                <select name="ville" id="city" class="form-control">
+                                <select name="ville" id="ville" class="form-control">
                                     <option value="">Selectionnez une ville</option>
                                     @foreach($cities as $city)
                                         <option value={{$city->ville}}>{{$city->ville}}</option>
@@ -33,19 +26,31 @@
                                 </select>
                             </div>
                             <div class="col-md-2 mb-2 mb-sm-2 mb-lg-0">
-                                <select name="quartier" id="town" class="form-control">
+                                <select name="quartier" id="commune" class="form-control">
                                     <option value="">Selectionnez un quartier</option>
                                     @foreach($quartiers as $quartier)
                                         <option value={{$quartier->quartier}}>{{$quartier->quartier}}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-3 mb-3 mb-sm-3 mt-3 mb-lg-0">
-                                <div name="localisation" id="localisation" class="form-check">
+                            <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
+                                <div name="localisation" class="form-check">
                                     <input class="form-check-input" type="checkbox" id="localisation">
                                     <label class="form-check-label" for="flexCheckDefault">
                                         Artisans dans vos environs
                                     </label>
+                                </div>
+                                <div class="form-group">
+                                    <input
+                                        type="range"
+                                        class="form-control-range w-100"
+                                        min="1"
+                                        max="10"
+                                        id="rayon"
+                                        value="1"
+                                        onInput="$('#rangeval').html($(this).val())"
+                                    >
+                                    <span id="rangeInterval"><span id="rangeval">1</span>KM</span>
                                 </div>
                             </div>
 
@@ -114,7 +119,8 @@
             </div>
         </div>
     </section>
-    <script src="{{asset('assets/js/redirectFromHomeToFIndCraftsmanWithParams.js')}}"></script>
-    <script src="{{asset('assets/js/FindPageScript.js')}}"></script>
 
+    @component('components.footer') @endcomponent
+    <script src="{{asset('assets/js/redirectFromHomeToFIndCraftsmanWithParams.js')}}"></script>
+    <script src="{{asset('assets/js/findPage.js')}}"></script>
 @endsection

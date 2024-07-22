@@ -53,6 +53,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         localisation = document.getElementById("localisation").checked
         if(localisation){
             preventUserForActivateLocalisation()
+        }else{
+            rayon = ""
+            longitude = ""
+            latitude = ""
         }
         console.log("localisation", localisation, latitude, longitude)
 

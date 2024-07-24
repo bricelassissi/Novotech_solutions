@@ -56,8 +56,8 @@
                                         <td>{{$metier->metier}}</td>
                                         <td style="text-align: center;"><span class="badge bg-info">{{$metier->artisans->count()}}</span></td>
                                         <td style="text-align: center;">
-                                            <a  data-id="{{$metier->id}}" data-metier="{{$metier->metier}}" data-description_metier="{{$metier->description_metier}}" class="edit-btn btn btn-success" data-toggle="modal" data-target="#editModal"><i class="fa fa-pencil"></i></a>
-                                            /<a  onclick="deleteMetier({{ $metier->id }})" href="javascript:void(0);"  > <i class="fa fa-trash  btn btn-danger" aria-hidden="true"></i> </a>
+                                            <a  data-id="{{$metier->id}}" data-metier="{{$metier->metier}}" data-description_metier="{{$metier->description_metier}}" class="edit-btn" data-toggle="modal" data-target="#editModal" style="color: green"><i class="fa fa-pencil"></i></a>
+                                            /<a  onclick="deleteMetier({{ $metier->id }})" href="javascript:void(0);" style="color: red"  > <i class="fa fa-trash" aria-hidden="true"></i> </a>
                                             {{-- <a class="dropdown-item" onclick="deleteJob({{ $job->id }})" href="javascript:void(0);"  ><i class="fa fa-trash" aria-hidden="true"></i> Delete</a> --}}
                                             {{-- <form action="">
                                                 <a type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="fa fa-trash"></i> </a>

@@ -7,11 +7,11 @@
 
 
 
-<section class="section-0 lazy d-flex bg-image-style dark align-items-center "   class="" data-bg="assets/images/banner5.jpg">
+<section class="section-0 lazy d-flex bg-image-style dark align-items-center "   class="" data-bg="assets/images/banner-artisan-2.jpg">
     <div class="container">
         <div class="row">
             <div class="col-12 col-xl-8">
-                <h1>Plateforme des artisan</h1>
+                <h1>Plateforme des artisans</h1>
                 <p>Entreprise 72</p>
             </div>
         </div>
@@ -21,11 +21,13 @@
                 <div class="card border-0 shadow p-5">
                     <div class="row">
                         <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
-                            <select name="category" id="category" class="form-control">
-                                <option value="">Selectionnez une Catégorie</option>
-                                <option value="">Mecanique</option>
-                                <option value="">Maintenance</option>
-                                <option value="">Froid</option>
+                            <select name="metier" id="metier" class="form-control">
+                                <option value="">Selectionner un Métier</option>
+                                @if ($metiers->isNotEmpty())
+                                    @foreach ($metiers as $metier)
+                                    <option value="{{ $metier->id }}">{{ $metier->metier }}</option>  
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                         <div class="col-md-3 mb-3 mb-sm-3 mb-lg-0">
@@ -116,164 +118,36 @@
             <div class="job_listing_area">                    
                 <div class="job_lists">
                     <div class="row">
-                        <div class="col-md-4">
-                            <div class="card border-0 p-3 shadow mb-4">
-                                <div class="card-body">
-                                    <h3 class="border-0 fs-5 pb-2 mb-0">M. Aly Charles Kouamé</h3>
-                                    <p>Artisanat d’art et de décoration</p>
-                                    <div class="bg-light p-3 border">
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                            <span class="ps-1">Bouaké</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map"></i></span>
-                                            <span class="ps-1">Centre ville - près de mairie</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-phone"></i></span>
-                                            <span class="ps-1">00225 - 0700000000</span>
-                                        </p>
-                                    </div>
+                        @if ($artisans->isNotEmpty())
+                            @foreach ($artisans as $artisan)
+                                <div class="col-md-4">
+                                    <div class="card border-0 p-3 shadow mb-4">
+                                        <div class="card-body">
+                                            <h3 class="border-0 fs-5 pb-2 mb-0">{{$artisan->user->nom}} {{$artisan->user->prenom}}</h3>
+                                            <p>{{$artisan->metier->metier}}</p>
+                                            <div class="bg-light p-3 border">
+                                                <p class="mb-0">
+                                                    <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
+                                                    <span class="ps-1">{{$artisan->ville}}</span>
+                                                </p>
+                                                <p class="mb-0">
+                                                    <span class="fw-bolder"><i class="fa fa-map"></i></span>
+                                                    <span class="ps-1">{{$artisan->quartier}}</span>
+                                                </p>
+                                                <p class="mb-0">
+                                                    <span class="fw-bolder"><i class="fa fa-phone"></i></span>
+                                                    <span class="ps-1">00225 - {{$artisan->telephone}}</span>
+                                                </p>
+                                            </div>
 
-                                    <div class="d-grid mt-3">
-                                        <a href="artisan-detail.html" class="btn btn-primary btn-lg">Details</a>
+                                            <div class="d-grid mt-3">
+                                                <a href="{{ route('artisan.details',$artisan->id) }}" class="btn btn-primary btn-lg">Details</a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card border-0 p-3 shadow mb-4">
-                                <div class="card-body">
-                                    <h3 class="border-0 fs-5 pb-2 mb-0">M. Aly Charles Kouamé</h3>
-                                    <p>Artisanat d’art et de décoration</p>
-                                    <div class="bg-light p-3 border">
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                            <span class="ps-1">Bouaké</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map"></i></span>
-                                            <span class="ps-1">Centre ville - près de mairie</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-phone"></i></span>
-                                            <span class="ps-1">00225 - 0700000000</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="d-grid mt-3">
-                                        <a href="artisan-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card border-0 p-3 shadow mb-4">
-                                <div class="card-body">
-                                    <h3 class="border-0 fs-5 pb-2 mb-0">M. Aly Charles Kouamé</h3>
-                                    <p>Artisanat d’art et de décoration</p>
-                                    <div class="bg-light p-3 border">
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                            <span class="ps-1">Bouaké</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map"></i></span>
-                                            <span class="ps-1">Centre ville - près de mairie</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-phone"></i></span>
-                                            <span class="ps-1">00225 - 0700000000</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="d-grid mt-3">
-                                        <a href="artisan-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="card border-0 p-3 shadow mb-4">
-                                <div class="card-body">
-                                    <h3 class="border-0 fs-5 pb-2 mb-0">M. Aly Charles Kouamé</h3>
-                                    <p>Artisanat d’art et de décoration</p>
-                                    <div class="bg-light p-3 border">
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                            <span class="ps-1">Bouaké</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map"></i></span>
-                                            <span class="ps-1">Centre ville - près de mairie</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-phone"></i></span>
-                                            <span class="ps-1">00225 - 0700000000</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="d-grid mt-3">
-                                        <a href="artisan-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card border-0 p-3 shadow mb-4">
-                                <div class="card-body">
-                                    <h3 class="border-0 fs-5 pb-2 mb-0">M. Aly Charles Kouamé</h3>
-                                    <p>Artisanat d’art et de décoration</p>
-                                    <div class="bg-light p-3 border">
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                            <span class="ps-1">Bouaké</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map"></i></span>
-                                            <span class="ps-1">Centre ville - près de mairie</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-phone"></i></span>
-                                            <span class="ps-1">00225 - 0700000000</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="d-grid mt-3">
-                                        <a href="artisan-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card border-0 p-3 shadow mb-4">
-                                <div class="card-body">
-                                    <h3 class="border-0 fs-5 pb-2 mb-0">M. Aly Charles Kouamé</h3>
-                                    <p>Artisanat d’art et de décoration</p>
-                                    <div class="bg-light p-3 border">
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map-marker"></i></span>
-                                            <span class="ps-1">Bouaké</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-map"></i></span>
-                                            <span class="ps-1">Centre ville - près de mairie</span>
-                                        </p>
-                                        <p class="mb-0">
-                                            <span class="fw-bolder"><i class="fa fa-phone"></i></span>
-                                            <span class="ps-1">00225 - 0700000000</span>
-                                        </p>
-                                    </div>
-
-                                    <div class="d-grid mt-3">
-                                        <a href="artisan-detail.html" class="btn btn-primary btn-lg">Details</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        
+                            @endforeach
+                        @endif
                                                  
                     </div>
                 </div>

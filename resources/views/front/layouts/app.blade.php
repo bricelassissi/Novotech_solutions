@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html class="no-js" lang="fr" />
 <head>
@@ -17,6 +18,7 @@
     
 	<!-- Fav Icon -->
 	<link rel="shortcut icon" type="image/x-icon" href="#" />
+    @yield('customCss')
 </head>
 <body data-instant-intensity="mousedown">
 <header>
@@ -32,7 +34,7 @@
 						<a class="nav-link" aria-current="page" href="{{route('front.home')}}">Accueil</a>
 					</li>	
 					<li class="nav-item">
-						<a class="nav-link" aria-current="page" href="qui-sommes-nous.html">Qui sommes nous?</a>
+						<a class="nav-link" aria-current="page" href="{{route('quisommesnous')}}">Qui sommes nous?</a>
 					</li>	
 					<li class="nav-item">
 						<a class="nav-link" aria-current="page" href="trouver-artisan.html">Trouver un artisan</a>
@@ -139,6 +141,7 @@
 		}
 	});
 </script>
+@yield('customSidebarJs')
 @yield('customJs')
 </body>
 </html>

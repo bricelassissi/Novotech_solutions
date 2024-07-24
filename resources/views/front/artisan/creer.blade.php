@@ -284,21 +284,6 @@
                             </div>
                         </div>
                         
-
-                        <div class="mb-2">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="">Choisir un photo de profile <span class="req">*</span> </label>
-                                            <input type="file" name="photo_profile" id="photo_profile">
-                                    <p></p>
-                                </div>
-                                <div class="col-md-6">
-                                    <label for="">Photo de presentation de votre activité <span class="req">*</span> </label>
-                                    <input type="file" name="">                                   
-                                     <p></p>
-                                </div>
-                            </div>
-                        </div>
                         
 
 
@@ -413,7 +398,7 @@
                             $("#latitude").addClass('is-invalid')
                             .siblings('p')
                             .addClass('invalid-feedback')
-                            .html(errors.metier_id)
+                            .html(errors.latitude)
                         } else {
                             $("#latitude").removeClass('is-invalid')
                             .siblings('p')

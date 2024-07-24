@@ -1,5 +1,17 @@
 @extends('front.layouts.app')
 
+@section('customCss')
+    <style>
+      .pointer{
+        cursor: pointer;
+      }
+      .active-link {
+        color: red; /* ou toute autre couleur que vous préférez */
+        font-weight: bold; /* optionnel : rendre le lien en gras */
+    }
+    </style>
+@endsection
+
 @section('main')
 
 <section class="section-5 bg-2">
@@ -52,14 +64,35 @@
                             <tbody>
                                 @php $counter = 1;  @endphp
                                 @foreach ($artisans as $artisan)
-                                    <tr>
+                                    <tr 
+                                      class="view-btn pointer"
+                                      data-nom-artisan="{{$artisan->user->nom}}"
+                                      data-prenom-artisan="{{$artisan->user->prenom}}"
+                                      data-email-artisan="{{$artisan->user->email}}"
+                                      data-metier-artisan="{{$artisan->metier->metier}}"
+                                      data-ville-artisan="{{$artisan->ville}}"
+                                      data-quartier-artisan="{{$artisan->quartier}}"
+                                      data-poste_occupe_dans_l_entreprise-artisan="{{$artisan->poste_occupe_dans_l_entreprise}}"
+                                      data-description-artisan="{{$artisan->description}}"
+                                      data-telephone-artisan="{{$artisan->telephone}}"
+                                      data-telephone_whatsapp-artisan="{{$artisan->telephone_whatsapp}}"
+                                      data-latitude-artisan="{{$artisan->latitude}}"
+                                      data-longitude-artisan="{{$artisan->longitude}}"
+                                      data-zone_couverture-artisan="{{$artisan->zone_couverture}}"
+                                      data-anciennete-artisan="{{$artisan->anciennete}}"
+                                      data-plage_horaire-artisan="{{$artisan->plage_horaire}}"
+                                      data-jour_travaille-artisan="{{$artisan->jour_travaille}}"
+                                      data-registre_commerce-artisan="{{$artisan->registre_commerce}}"
+                                      data-numero_registre_commerce-artisan="{{$artisan->numero_registre_commerce}}"
+                                      {{-- data-metier-artisan="{{$artisan->metier}}" --}}
+                                    >
                                         <td class="text-center">{{ $counter }}</td>
                                         <td class="text-capitalize">{{$artisan->user->nom}} {{$artisan->user->prenom}}</td>
                                         <td class="text-center">{{$artisan->metier->metier}}</td>
                                         <td class="text-center">{{dateFormat($artisan->created_at)}}</td>
                                         <td class="text-center">
-                                            <a  data-id="{{$artisan->id}}" data-artisan="{{$artisan->artisan}}" data-description_artisan="{{$artisan->description_artisan}}" style="color: blueviolet"  class="view-btn" data-toggle="modal" data-target="#editModal"><i class="fa fa-eye"></i></a>
-                                            /<a  onclick="deleteArtisan({{ $artisan->id }})" href="javascript:void(0);" style="color: red"  > <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                                            {{-- <a  data-id="{{$artisan->id}}" data-artisan="{{$artisan->artisan}}" data-description_artisan="{{$artisan->description_artisan}}" style="color: blueviolet"  class="view-btn pointer" data-toggle="modal" data-target="#editModal"><i class="fa fa-eye"></i></a> --}}
+                                            <a  onclick="deleteArtisan({{ $artisan->id }})" href="javascript:void(0);" style="color: red"  > <i class="fa fa-trash" aria-hidden="true"></i> </a>
                                             {{-- <a class="dropdown-item" onclick="deleteJob({{ $job->id }})" href="javascript:void(0);"  ><i class="fa fa-trash" aria-hidden="true"></i> Delete</a> --}}
                                             {{-- <form action="">
                                                 <a type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="fa fa-trash"></i> </a>
@@ -119,7 +152,7 @@
   </div>
 
 
-  <!-- Edit Modal -->
+  <!-- View Modal -->
 
   <div id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" class="modal fade text-left">
     <div role="document" class="modal-dialog modal-lg">
@@ -136,36 +169,80 @@
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
                     <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                      Accordion Item #1
+                      Informations Artisans
                     </button>
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                      <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingTwo">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Accordion Item #2
-                    </button>
-                  </h2>
-                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                    </div>
-                  </div>
-                </div>
-                <div class="accordion-item">
-                  <h2 class="accordion-header" id="headingThree">
-                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Accordion Item #3
-                    </button>
-                  </h2>
-                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                    <div class="accordion-body">
-                      <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p><strong>Nom:</strong> <span id="modalNomArtisan"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p><strong>Prenom:</strong> <span id="modalPrenomArtisan"></span></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p><strong>Email:</strong> <span id="modalEmailArtisan"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p><strong>Metier:</strong> <span id="modalMetierArtisan"></span></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p><strong>Ville:</strong> <span id="modalVilleArtisan"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p><strong>Quartier:</strong> <span id="modalQuartierArtisan"></span></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p><strong>Numéro de téléphone:</strong> <span id="modalTelephoneArtisanArtisan"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p><strong>Numéro WhatsApp:</strong> <span id="modalTelephone_whatsappArtisanArtisan"></span></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p><strong>Latitude:</strong> <span id="modalLatitudeArtisanArtisan"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p><strong>Longitude:</strong> <span id="modalLongitudeArtisanArtisan"></span></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p><strong>Couverture:</strong> <span id="modalZone_couvertureArtisanArtisan"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p><strong>Ancienneté:</strong> <span id="modalAncienneteArtisanArtisan"></span></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p><strong>Plage horaire:</strong> <span id="modalPlage_horaireArtisanArtisan"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p><strong>Jours de travaille:</strong> <span id="modalJour_travailleArtisanArtisan"></span></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p><strong>Registre de commerce:</strong> <span id="modalRegistre_commerceArtisanArtisan"></span></p>
+                        </div>
+                        <div class="col-md-6">
+                          <p><strong>Numéro Registre de commerce:</strong> <span id="modalNumero_registre_commerceArtisanArtisan"></span></p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-12">
+                          <p style="text-align: justify"><strong>Description:</strong> <span id="modalDescriptionArtisanArtisan"></span></p>
+                        </div>
+
                     </div>
                   </div>
                 </div>
@@ -253,14 +330,53 @@
     //     });
 
         $('.view-btn').on('click', function() {
-            $("#editModal input[name='artisan_id']").val( $(this).data('id') );
-            $("#editModal input[name='artisan']").val( $(this).data('artisan') );
-            $("#editModal textarea[name='description_artisan']").val( $(this).data('description_artisan') );
+            // $("#editModal input[name='artisan_id']").val( $(this).data('id') );
+            // $("#editModal input[name='artisan']").val( $(this).data('artisan') );
+            // $("#editModal textarea[name='description_artisan']").val( $(this).data('description_artisan') );
 
-            $("#edit_artisan").removeClass('is-invalid')
-                    .siblings('p')
-                    .removeClass('invalid-feedback')
-                    .html("")
+            // $("#edit_artisan").removeClass('is-invalid')
+            //         .siblings('p')
+            //         .removeClass('invalid-feedback')
+            //         .html("")
+
+            var nomArtisan = $(this).data('nom-artisan');
+            var prenomArtisan = $(this).data('prenom-artisan');
+            var emailArtisan = $(this).data('email-artisan');
+            var metierArtisan = $(this).data('metier-artisan');
+            var villeArtisan = $(this).data('ville-artisan');
+            var quartierArtisan = $(this).data('quartier-artisan');
+            var poste_occupe_dans_l_entrepriseArtisan = $(this).data('poste_occupe_dans_l_entreprise-artisan');
+            var descriptionArtisan = $(this).data('description-artisan');
+            var telephoneArtisan = $(this).data('telephone-artisan');
+            var telephone_whatsappArtisan = $(this).data('telephone_whatsapp-artisan');
+            var latitudeArtisan = $(this).data('latitude-artisan');
+            var longitudeArtisan = $(this).data('longitude-artisan');
+            var zone_couvertureArtisan = $(this).data('zone_couverture-artisan');
+            var ancienneteArtisan = $(this).data('anciennete-artisan');
+            var plage_horaireArtisan = $(this).data('plage_horaire-artisan');
+            var jour_travailleArtisan = $(this).data('jour_travaille-artisan');
+            var registre_commerceArtisan = $(this).data('registre_commerce-artisan');
+            var numero_registre_commerceArtisan = $(this).data('numero_registre_commerce-artisan');
+
+
+            $('#modalNomArtisan').text(nomArtisan);
+            $('#modalPrenomArtisan').text(prenomArtisan);
+            $('#modalEmailArtisan').text(emailArtisan);
+            $('#modalMetierArtisan').text(metierArtisan);
+            $('#modalVilleArtisanArtisan').text(villeArtisan);
+            $('#modalQuartierArtisanArtisan').text(quartierArtisan);
+            $('#modalPoste_occupe_dans_l_entrepriseArtisanArtisan').text(poste_occupe_dans_l_entrepriseArtisan);
+            $('#modalDescriptionArtisanArtisan').text(descriptionArtisan);
+            $('#modalTelephoneArtisanArtisan').text(telephoneArtisan);
+            $('#modalTelephone_whatsappArtisanArtisan').text(telephone_whatsappArtisan);
+            $('#modalLatitudeArtisanArtisan').text(latitudeArtisan);
+            $('#modalLongitudeArtisanArtisan').text(longitudeArtisan);
+            $('#modalZone_couvertureArtisanArtisan').text(zone_couvertureArtisan);
+            $('#modalAncienneteArtisanArtisan').text(ancienneteArtisan);
+            $('#modalPlage_horaireArtisanArtisan').text(plage_horaireArtisan);
+            $('#modalJour_travailleArtisanArtisan').text(jour_travailleArtisan);
+            $('#modalRegistre_commerceArtisanArtisan').text(registre_commerceArtisan);
+            $('#modalNumero_registre_commerceArtisanArtisan').text(numero_registre_commerceArtisan);
 
             // Afficher le modal
             $('#editModal').modal('show');

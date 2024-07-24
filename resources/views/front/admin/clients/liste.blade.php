@@ -21,33 +21,52 @@
             </div>
             <div class="col-lg-9">
                 
-                <h2>Afficher les clients inscrits ici.</h2>  
                 
-                <div class="container card mt-5 p-3">
-                    <table id="clientTable" class="stripe" style="width:100%">
-                        <thead>
-                            <tr style="font-size: 12px;">
-                                <th>N°</th>
-                                <th>Nom & Prenom(s)</th>
-                                <th>Date d'inscription</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($clients as $client)
-                                <tr>
-                                    <td></td>
-                                    <td>{{$client->user->nom}} {{$client->user->prenom}}</td>
-                                    <td>{{dateFormat($client->created_at)}}</td>
-                                    <td>
-                                        <i class="fa fa-eye cursor" style="color: rgb(48, 7, 171)"></i> / 
-                                        <i class="fa fa-trash cursor" style="color: red"></i>
-                                    </td>
+
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h3 class="card-title">Liste des clients</h3>
+                        <div class="card-tools">
+                            {{-- <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addclientModal"> <i class="fa fa-plus-circle"></i> Ajouter métier  </button> --}}
+                            {{-- <button class="btn btn-success" onclick="openAjouterclientModal()"> <i class="fa fa-plus-circle"></i> Ajouter métier  </button> --}}
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <table id="clientTable" class="display" style="width:100%">
+                            <thead>
+                                <tr style="font-size: 12px;">
+                                    <th style="width:5%; text-align: center;">N°</th>
+                                    <th style="width:45%">Nom & Prénom(s)</th>
+                                    <th style="width:25%; text-align: center;">Date d'inscription</th>
+                                    <th style="width:30%; text-align: center;">Action(s)</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                @php $counter = 1;  @endphp
+                                @foreach ($clients as $client)
+                                    <tr>
+                                        <td class="text-center">{{ $counter }}</td>
+                                        <td class="text-capitalize">{{$client->nom}} {{$client->prenom}}</td>
+                                        <td class="text-center">{{dateFormat($client->created_at)}}</td>
+                                        <td class="text-center">
+                                            <a  data-id="{{$client->id}}" data-nom="{{$client->nom}}" data-prenom="{{$client->prenom}}"  style="color: blueviolet"  class="view-btn" data-toggle="modal" data-target="#editModal"><i class="fa fa-eye"></i></a>
+                                            /<a  onclick="deleteClient({{ $client->id }})" href="javascript:void(0);" style="color: red"  > <i class="fa fa-trash" aria-hidden="true"></i> </a>
+                                            {{-- <a class="dropdown-item" onclick="deleteJob({{ $job->id }})" href="javascript:void(0);"  ><i class="fa fa-trash" aria-hidden="true"></i> Delete</a> --}}
+                                            {{-- <form action="">
+                                                <a type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="fa fa-trash"></i> </a>
+                                            </form> --}}
+                                        </td>
+                                    </tr>
+                                    @php $counter++; @endphp
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
+
+
+
             </div>
         </div>
     </div>

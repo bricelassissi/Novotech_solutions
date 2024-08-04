@@ -11,8 +11,8 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-xl-8">
-                <h1>Plateforme des artisans</h1>
-                <p>Entreprise 72</p>
+                <h1>PLATEFORME NATIONALE DE PROMOTION DES METIERS ARTISANAUX DE LA COTE</h1>
+
             </div>
         </div>
 
